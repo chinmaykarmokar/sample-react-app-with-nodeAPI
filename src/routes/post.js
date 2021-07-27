@@ -22,7 +22,7 @@ class Post extends Component {
             price: this.state.price
         }
 
-        axios.post(`https://test-nodejs-api-with-free-db.herokuapp.com/`, productDetails)
+        axios.post("http://localhost:3000", productDetails)
         .then (res => {
             console.log(res);
             console.log(res.data);

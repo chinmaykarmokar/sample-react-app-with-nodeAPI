@@ -1,27 +1,57 @@
 import React, { Component } from "react";
-import Post from './routes/post';
-import ReactDOM from 'react-dom';
+import Login from "./routes/login";
+import About from "./routes/about";
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
 import axios from 'axios';
 
 class App extends Component {
   state = {
-    products: []
+    products: {},
+    demo: [
+      {
+        name: 'Chinmay'
+      }
+    ]
   }
 
   componentDidMount() {
     axios.get(`https://test-nodejs-api-with-free-db.herokuapp.com/`)
       .then(res => {
-        const products = res.data.response;
+        const products = res.data;
         console.log(products);
         this.setState({
           products: products
         });
+        console.log(this.state.products.response[0].name);
       })
+  }
+
+  logout = () => {
+    localStorage.clear();
   }
 
   render() {
     return (
-      <h2>{this.state.products.map(person => <li>{person.name}</li>)}</h2>
+      <Router>
+        <div>
+          <Link to="/">Login</Link>
+          <Link to="/home">Home</Link>
+          <Link to="/about">About</Link>
+          <Link to="/" onClick={this.logout}>Logout</Link>
+
+          <Switch>
+            <Route path="/" component={Login} exact />
+            <Route path="/about" component={About}/>
+          </Switch>
+        </div>
+      </Router>
     )
   }
 }
