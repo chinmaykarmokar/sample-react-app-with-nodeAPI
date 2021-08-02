@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Login from "./routes/login";
 import About from "./routes/about";
+import Post from "./routes/post";
 
 import {
   BrowserRouter as Router,
@@ -42,12 +43,13 @@ class App extends Component {
       <Router>
         <div>
           <Link to="/">Login</Link>
-          <Link to="/home">Home</Link>
+          <Link to="/addProducts">Add Products</Link>
           <Link to="/about">About</Link>
           <Link to="/" onClick={this.logout}>Logout</Link>
 
           <Switch>
             <Route path="/" component={Login} exact />
+            <Route path="/addProducts" component={Post}/>
             <Route path="/about" component={About}/>
           </Switch>
         </div>

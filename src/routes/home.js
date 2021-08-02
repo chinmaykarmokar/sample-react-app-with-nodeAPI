@@ -3,7 +3,16 @@ import React, { Component } from "react";
 class Home extends Component {
     render () {
         return (
-            <h1>Welcome Back to my website!</h1>
+            <div>
+                <table style={{width: "100%", border: "1px solid black"}}>
+                    <tr>
+                        <th><h3>Terna College Of Engineering</h3></th>
+                    </tr>
+                    <tr>
+                        <th>Navi Mumbai,</th>
+                    </tr>
+                </table>
+            </div>
         )
     }
 }
